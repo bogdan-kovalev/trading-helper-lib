@@ -5,4 +5,3 @@ export type AssetsResponse = {
   stableCoins: Coin[]
   trades: TradeMemo[]
 }
-
