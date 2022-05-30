@@ -1,5 +1,5 @@
-import { sumWithMaxPrecision } from "./functions"
-import { ExchangeSymbol } from "./types"
+import { sumWithMaxPrecision } from "./Functions"
+import { ExchangeSymbol } from "./Types"
 
 export class TradeResult {
   symbol: ExchangeSymbol

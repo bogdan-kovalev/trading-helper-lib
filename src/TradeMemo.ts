@@ -1,5 +1,5 @@
 import { TradeResult } from "./TradeResult"
-import { ExchangeSymbol, TradeState } from "./types"
+import { ExchangeSymbol, TradeState } from "./Types"
 import { PricesHolder } from "./PricesHolder"
 
 export class TradeMemo extends PricesHolder {

@@ -1,4 +1,4 @@
-import { PriceMove } from "./types"
+import { PriceMove } from "./Types"
 
 export function sumWithMaxPrecision(a: number, b: number): number {
   const aSplit = `${a}`.split(`.`)

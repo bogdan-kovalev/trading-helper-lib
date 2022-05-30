@@ -1,5 +1,5 @@
 import { TradeMemo } from "./TradeMemo"
-import { Coin } from "./types"
+import { Coin } from "./Types"
 
 export type AssetsResponse = {
   stableCoins: Coin[]
