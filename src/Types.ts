@@ -1,4 +1,4 @@
-import { CoinScore } from './CoinScore'
+import { CoinScore } from "./CoinScore";
 
 export enum StableUSDCoin {
   USDT = "USDT",

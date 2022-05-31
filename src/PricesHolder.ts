@@ -1,5 +1,5 @@
-import { getPriceMove } from './Functions'
-import { PriceMove } from './Types'
+import { getPriceMove } from "./Functions";
+import { PriceMove } from "./Types";
 
 export class PricesHolder {
   static readonly PRICES_MAX_CAP = 10;

@@ -1,4 +1,4 @@
-import { AutoTradeBestScores, PriceProvider, StableUSDCoin } from './Types'
+import { AutoTradeBestScores, PriceProvider, StableUSDCoin } from "./Types";
 
 export interface Config {
   KEY?: string;

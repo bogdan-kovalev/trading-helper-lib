@@ -1,4 +1,4 @@
-import { PricesHolder } from './PricesHolder'
+import { PricesHolder } from "./PricesHolder";
 
 export class CoinScore extends PricesHolder {
   private readonly n: string;
