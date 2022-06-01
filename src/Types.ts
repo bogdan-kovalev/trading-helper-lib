@@ -1,4 +1,5 @@
 import { CoinScore } from "./CoinScore";
+import Integer = GoogleAppsScript.Integer;
 
 export enum StableUSDCoin {
   USDT = "USDT",
@@ -110,4 +111,10 @@ export interface InitialSetupParams {
   dbURL: string;
   binanceAPIKey: string;
   binanceSecretKey: string;
+}
+
+export interface ICacheProxy {
+  get: (key: string) => string | null;
+  put: (key: string, value: string, expirationInSeconds?: Integer) => void;
+  remove: (key: string) => void;
 }

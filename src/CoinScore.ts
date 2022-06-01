@@ -1,26 +1,14 @@
-import { PricesHolder } from "./PricesHolder";
-
-export class CoinScore extends PricesHolder {
+export class CoinScore {
   private readonly n: string;
   private r = 0;
 
-  /**
-   * @deprecated
-   */
-  private readonly c: string;
-
   constructor(coinName: string, obj?: CoinScore) {
-    super();
     this.n = coinName;
-    this.p = obj?.p ?? this.p;
     this.r = obj?.r ?? this.r;
   }
 
-  static fromObject(obj: CoinScore): CoinScore {
-    const rec = new CoinScore(obj.n || obj.c);
-    rec.r = obj.r;
-    rec.p = obj.p;
-    return rec;
+  static fromObject(obj: object): CoinScore {
+    return Object.assign(Object.create(CoinScore.prototype), obj);
   }
 
   /**

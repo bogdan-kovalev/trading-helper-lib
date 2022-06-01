@@ -1,6 +1,6 @@
 import { TradeResult } from "./TradeResult";
 import { ExchangeSymbol, TradeState } from "./Types";
-import { PricesHolder } from "./PricesHolder";
+import { PricesHolder } from "./IPriceProvider";
 
 export class TradeMemo extends PricesHolder {
   tradeResult: TradeResult;

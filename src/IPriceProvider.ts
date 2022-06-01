@@ -1,5 +1,5 @@
 import { getPriceMove } from "./Functions";
-import { PriceMove } from "./Types";
+import { PriceMove, StableUSDCoin } from "./Types";
 
 export class PricesHolder {
   static readonly PRICES_MAX_CAP = 10;
@@ -56,4 +56,14 @@ export class PricesHolder {
   getPriceMove(): PriceMove {
     return getPriceMove(PricesHolder.PRICES_MAX_CAP, this.p);
   }
+}
+
+export type CoinName = string;
+
+export interface PriceHoldersMap {
+  [key: CoinName]: PricesHolder;
+}
+
+export interface IPriceProvider {
+  get: (stableCoin: StableUSDCoin) => PriceHoldersMap;
 }
