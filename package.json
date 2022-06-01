@@ -4,7 +4,7 @@
   "description": "Trading Helper library.",
   "scripts": {
     "build": "npx tsc",
-    "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint --fix --ext .ts ./src",
     "prepare": "husky install"
   },
   "main": "dist/index.js",
