@@ -2,9 +2,9 @@ import { CoinScore } from "./CoinScore";
 import Integer = GoogleAppsScript.Integer;
 
 export enum StableUSDCoin {
-  USDT = "USDT",
-  USDC = "USDC",
-  BUSD = "BUSD",
+  USDT = `USDT`,
+  USDC = `USDC`,
+  BUSD = `BUSD`,
 }
 
 export interface PriceMap {
@@ -17,8 +17,8 @@ export interface Stats {
 }
 
 export enum PriceProvider {
-  Binance = "Binance",
-  CoinStats = "CoinStats",
+  Binance = `Binance`,
+  CoinStats = `CoinStats`,
 }
 
 export class ExchangeSymbol {
@@ -49,10 +49,10 @@ export class ExchangeSymbol {
 }
 
 export enum TradeState {
-  BUY = "buy",
-  BOUGHT = "bought",
-  SELL = "sell",
-  SOLD = "sold",
+  BUY = `buy`,
+  BOUGHT = `bought`,
+  SELL = `sell`,
+  SOLD = `sold`,
 }
 
 export class Coin {

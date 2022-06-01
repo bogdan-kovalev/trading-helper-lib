@@ -14,7 +14,7 @@ export class TradeResult {
   msg: string;
   fromExchange = false;
 
-  constructor(symbol: ExchangeSymbol, msg = "") {
+  constructor(symbol: ExchangeSymbol, msg = ``) {
     this.symbol = symbol;
     this.msg = msg;
   }
@@ -31,7 +31,7 @@ export class TradeResult {
    * @example "Bought 21 DAR for 9.81183 BUSD. Average price: 0.46723"
    */
   toTradeString(): string {
-    return `${this.soldPrice ? "Sold" : "Bought"} ${this.quantity} ${
+    return `${this.soldPrice ? `Sold` : `Bought`} ${this.quantity} ${
       this.symbol.quantityAsset
     } for ${this.cost} ${this.symbol.priceAsset}. Price: ${this.price}`;
   }
