@@ -105,3 +105,9 @@ export interface ScoresData {
   marketMove: MarketMove;
   realData?: boolean;
 }
+
+export interface InitialSetupParams {
+  dbURL: string;
+  binanceAPIKey: string;
+  binanceSecretKey: string;
+}
