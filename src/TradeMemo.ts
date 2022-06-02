@@ -155,29 +155,49 @@ export class TradeMemo extends PricesHolder {
     );
   }
 
+  /**
+   * current price is lower than stop limit price,
+   * and previous price is greater than stop limit price
+   */
   stopLimitCrossedDown(): boolean {
-    // all prices except the last one are greater than the stop limit price
     return (
       this.currentPrice < this.stopLimitPrice &&
-      this.prices.slice(0, -1).every((p) => p >= this.stopLimitPrice)
+      this.prices[this.prices.length - 2] >= this.stopLimitPrice
     );
   }
 
+  /**
+   * current price is greater than profit limit price,
+   * and previous price is lower than profit limit price
+   * @param profitLimit
+   */
   profitLimitCrossedUp(profitLimit: number): boolean {
-    // all prices except the last one are lower the profit limit price
     const profitLimitPrice = this.tradeResult.price * (1 + profitLimit);
     return (
       this.currentPrice > profitLimitPrice &&
-      this.prices.slice(0, -1).every((p) => p <= profitLimitPrice)
+      this.prices[this.prices.length - 2] <= profitLimitPrice
     );
   }
 
+  /**
+   * All prices except the last one are lower the price at which the trade was bought
+   */
   entryPriceCrossedUp(): boolean {
-    // all prices except the last one are lower the price at which the trade was bought
     const entryPrice = this.tradeResult.price;
     return (
       this.currentPrice > entryPrice &&
       this.prices.slice(0, -1).every((p) => p <= entryPrice)
+    );
+  }
+
+  /**
+   * All prices except the last one are higher the price at which the trade was bought
+   */
+  entryPriceCrossedDown(): boolean {
+    const entryPrice = this.tradeResult.price;
+    return (
+      this.currentPrice < entryPrice &&
+      this.prices.slice(0, -1).every((p) => p >= entryPrice)
     );
   }
 }
