@@ -1,6 +1,6 @@
 {
   "name": "trading-helper-lib",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Trading Helper library.",
   "scripts": {
     "build": "npx tsc",
