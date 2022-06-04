@@ -37,6 +37,10 @@ export interface Config {
    */
   BuyDumps?: boolean;
   /**
+   * If true - sell the price pump automatically when {@link PriceAnomalyAlert} alert happens.
+   */
+  SellPumps?: boolean;
+  /**
    * Sets the maximum percentage of all market currencies that should gain or lose price, to be
    * considered as those which scores have to be recalculated. For example:
    * if the value is 0.01, this means, that if 1% percent of all market currencies gain or lose price,
