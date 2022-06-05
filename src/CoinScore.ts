@@ -35,7 +35,7 @@ export class CoinScore {
   }
 
   getScore(selectivity: ScoreSelectivity): number {
-    return this.sm[selectivity];
+    return this.sm ? this.sm[selectivity] : 0;
   }
 
   get coinName(): string {
