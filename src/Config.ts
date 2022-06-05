@@ -1,4 +1,9 @@
-import { AutoTradeBestScores, PriceProvider, StableUSDCoin } from "./Types";
+import {
+  AutoTradeBestScores,
+  PriceProvider,
+  ScoreSelectivity,
+  StableUSDCoin,
+} from "./Types";
 
 export interface Config {
   KEY?: string;
@@ -47,13 +52,17 @@ export interface Config {
    * while 99% of all market currencies do not change or go in the opposite direction,
    * the scores will be recalculated for that 1%.
    */
-  ScoreUpdateThreshold?: number;
+  ScoreSelectivity?: keyof typeof ScoreSelectivity;
   /**
    * AutoTradeBestScores - when enabled, the tool will trade the "Scores" recommended coins automatically.
    * If the coin falls out of the recommended list, it will be removed from the assets once it is sold.
    */
   AutoTradeBestScores?: AutoTradeBestScores;
 
+  /**
+   * @deprecated
+   */
+  ScoreUpdateThreshold?: number;
   /**
    * @deprecated
    */
