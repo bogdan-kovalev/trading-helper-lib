@@ -55,6 +55,8 @@ export function getPriceMove(maxCapacity: number, prices: number[]): PriceMove {
   ).toFixed(0);
 }
 
-export function enumKeys(enumType: any): string[] {
-  return Object.keys(enumType).filter((k) => isNaN(Number(k)));
+export function enumKeys<T>(enumType: any): T[] {
+  return Object.keys(enumType).filter((k) =>
+    isNaN(Number(k))
+  ) as unknown as T[];
 }
