@@ -17,19 +17,21 @@ export class CoinScore {
     [ScoreSelectivity.MINIMAL]: 0,
   };
 
-  /**
-   * @deprecated
-   */
-  private r = 0;
-
-  constructor(coinName: string, obj?: CoinScore) {
+  constructor(coinName: string, obj?: any) {
     this.n = coinName;
     this.sm = obj?.sm ?? this.sm;
-    this.r = obj?.r ?? this.r;
+  }
+
+  migrateOldScore(selectivity: ScoreSelectivity): void {
+    const self = this as any;
+    if (self.r) {
+      this.sm[selectivity] = self.r;
+      delete self.r;
+    }
   }
 
   static fromObject(obj: object): CoinScore {
-    return Object.assign(new CoinScore(``), obj);
+    return Object.assign(Object.create(CoinScore.prototype), obj);
   }
 
   getScore(selectivity: ScoreSelectivity): number {
@@ -42,27 +44,5 @@ export class CoinScore {
 
   addScore(selectivity: ScoreSelectivity, value: number): void {
     this.sm[selectivity] += value;
-  }
-
-  /**
-   * The number of times this coin was going up when the rest of the market wasn't.
-   * @deprecated
-   */
-  get score(): number {
-    return this.r;
-  }
-
-  /**
-   * @deprecated
-   */
-  scoreUp(): void {
-    this.r++;
-  }
-
-  /**
-   * @deprecated
-   */
-  scoreDown(): void {
-    this.r > 0 && this.r--;
   }
 }
