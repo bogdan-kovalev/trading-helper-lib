@@ -1,20 +1,19 @@
-import { ScoreSelectivity } from "./Types";
+import { ScoreSelectivityKeys } from "./Types";
+
+export type ScoreValueMap = {
+  [key in ScoreSelectivityKeys]: number;
+};
 
 export class CoinScore {
   private readonly n: string;
   /**
    * The map of score value for each selectivity level.
    */
-  private readonly sm: {
-    [ScoreSelectivity.EXTREME]: number;
-    [ScoreSelectivity.HIGH]: number;
-    [ScoreSelectivity.MODERATE]: number;
-    [ScoreSelectivity.MINIMAL]: number;
-  } = {
-    [ScoreSelectivity.EXTREME]: 0,
-    [ScoreSelectivity.HIGH]: 0,
-    [ScoreSelectivity.MODERATE]: 0,
-    [ScoreSelectivity.MINIMAL]: 0,
+  private readonly sm: ScoreValueMap = {
+    EXTREME: 0,
+    HIGH: 0,
+    MODERATE: 0,
+    MINIMAL: 0,
   };
 
   constructor(coinName: string, obj?: any) {
@@ -25,10 +24,10 @@ export class CoinScore {
   static migrateOldScore(
     old: any,
     cs: CoinScore,
-    selectivity: ScoreSelectivity
+    key: keyof ScoreValueMap
   ): void {
     if (old.r) {
-      cs.sm[selectivity] = old.r;
+      cs.sm[key] = old.r;
     }
   }
 
@@ -36,15 +35,15 @@ export class CoinScore {
     return Object.assign(Object.create(CoinScore.prototype), obj);
   }
 
-  getScore(selectivity: ScoreSelectivity): number {
-    return this.sm ? this.sm[selectivity] : 0;
+  getScore(key: keyof ScoreValueMap): number {
+    return this.sm ? this.sm[key] : 0;
   }
 
   get coinName(): string {
     return this.n;
   }
 
-  addScore(selectivity: ScoreSelectivity, value: number): void {
-    this.sm[selectivity] += value;
+  addScore(key: keyof ScoreValueMap, value: number): void {
+    this.sm[key] += value;
   }
 }

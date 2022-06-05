@@ -93,6 +93,8 @@ export enum ScoreSelectivity {
   MINIMAL = 0.07,
 }
 
+export type ScoreSelectivityKeys = keyof typeof ScoreSelectivity;
+
 export enum AutoTradeBestScores {
   OFF = 0,
   TOP1 = 1,
