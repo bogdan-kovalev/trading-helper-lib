@@ -22,11 +22,13 @@ export class CoinScore {
     this.sm = obj?.sm ?? this.sm;
   }
 
-  migrateOldScore(selectivity: ScoreSelectivity): void {
-    const self = this as any;
-    if (self.r) {
-      this.sm[selectivity] = self.r;
-      delete self.r;
+  static migrateOldScore(
+    old: any,
+    cs: CoinScore,
+    selectivity: ScoreSelectivity
+  ): void {
+    if (old.r) {
+      cs.sm[selectivity] = old.r;
     }
   }
 
