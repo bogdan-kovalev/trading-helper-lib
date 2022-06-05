@@ -24,7 +24,7 @@ export class CoinScore {
   static migrateOldScore(
     old: any,
     cs: CoinScore,
-    key: keyof ScoreValueMap
+    key: ScoreSelectivityKeys
   ): void {
     if (old.r) {
       cs.sm[key] = old.r;
@@ -35,7 +35,7 @@ export class CoinScore {
     return Object.assign(Object.create(CoinScore.prototype), obj);
   }
 
-  getScore(key: keyof ScoreValueMap): number {
+  getScore(key: ScoreSelectivityKeys): number {
     return this.sm ? this.sm[key] : 0;
   }
 
@@ -43,7 +43,7 @@ export class CoinScore {
     return this.n;
   }
 
-  addScore(key: keyof ScoreValueMap, value: number): void {
+  addScore(key: ScoreSelectivityKeys, value: number): void {
     this.sm[key] += value;
   }
 }
