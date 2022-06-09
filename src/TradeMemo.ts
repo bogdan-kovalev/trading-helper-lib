@@ -158,7 +158,7 @@ export class TradeMemo extends PricesHolder {
   stopLimitCrossedDown(): boolean {
     return (
       this.currentPrice < this.stopLimitPrice &&
-      this.prices[this.prices.length - 1] >= this.stopLimitPrice
+      this.prices[this.prices.length - 2] >= this.stopLimitPrice
     );
   }
 
@@ -167,7 +167,7 @@ export class TradeMemo extends PricesHolder {
     const profitLimitPrice = this.tradeResult.price * (1 + profitLimit);
     return (
       this.currentPrice > profitLimitPrice &&
-      this.prices[this.prices.length - 1] <= profitLimitPrice
+      this.prices[this.prices.length - 2] <= profitLimitPrice
     );
   }
 
