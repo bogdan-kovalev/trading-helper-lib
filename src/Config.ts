@@ -1,13 +1,11 @@
 import {
   AutoTradeBestScores,
   PriceProvider,
-  Profile,
   ScoreSelectivity,
   StableUSDCoin,
 } from "./Types";
 
 export interface Config {
-  profile: Profile;
   KEY?: string;
   SECRET?: string;
   StableCoin: StableUSDCoin;

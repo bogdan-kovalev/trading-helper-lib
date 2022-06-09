@@ -120,7 +120,3 @@ export interface ICacheProxy {
   put: (key: string, value: string, expirationInSeconds?: Integer) => void;
   remove: (key: string) => void;
 }
-
-export interface Profile {
-  name: string;
-}
