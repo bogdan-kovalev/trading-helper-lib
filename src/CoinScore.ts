@@ -36,7 +36,7 @@ export class CoinScore {
       cs.sm[key] = old.r;
     }
     enumKeys<ScoreSelectivityKeys>(ScoreSelectivity).forEach((k) => {
-      cs.sm[shortMapping[k]] = old?.[k] ?? 0;
+      cs.sm[shortMapping[k]] = old?.sm?.[k] ?? 0;
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete cs.sm[k];
     });
