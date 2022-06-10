@@ -32,13 +32,17 @@ export class CoinScore {
     cs: CoinScore,
     key: ScoreSelectivityKeys
   ): void {
+    if (!old) return;
     if (old?.r) {
       cs.sm[key] = old.r;
     }
+    if (!old.sm) return;
     enumKeys<ScoreSelectivityKeys>(ScoreSelectivity).forEach((k) => {
-      cs.sm[shortMapping[k]] = old?.sm?.[k] ?? 0;
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      delete cs.sm[k];
+      if (key in old.sm) {
+        cs.sm[shortMapping[k]] = old.sm[k];
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        delete cs.sm[k];
+      }
     });
   }
 
