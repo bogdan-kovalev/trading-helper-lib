@@ -24,7 +24,7 @@ export class CoinScore {
 
   constructor(coinName: string, obj?: any) {
     this.n = coinName;
-    this.sm = obj?.sm ?? { ...this.sm };
+    this.sm = obj?.sm ?? Object.assign({}, this.sm);
   }
 
   static migrateOldScore(
