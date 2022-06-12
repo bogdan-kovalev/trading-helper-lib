@@ -38,11 +38,9 @@ export class CoinScore {
     }
     if (!old.sm) return;
     enumKeys<ScoreSelectivityKeys>(ScoreSelectivity).forEach((k) => {
-      if (old.sm[k]) {
-        cs.sm[shortMapping[k]] = old.sm[k];
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-        delete cs.sm[k];
-      }
+      cs.sm[shortMapping[k]] = old.sm[k] ?? 0;
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete cs.sm[k];
     });
   }
 
