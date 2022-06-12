@@ -24,7 +24,12 @@ export class CoinScore {
 
   constructor(coinName: string, obj?: any) {
     this.n = coinName;
-    this.sm = obj?.sm ?? Object.assign({}, this.sm);
+    if (obj?.sm) {
+      enumKeys<ScoreSelectivityKeys>(ScoreSelectivity).forEach((key) => {
+        const shortKey = shortMapping[key];
+        this.sm[shortKey] = obj.sm[key] ?? obj.sm[shortKey] ?? 0;
+      });
+    }
   }
 
   static migrateOldScore(
@@ -32,16 +37,9 @@ export class CoinScore {
     cs: CoinScore,
     key: ScoreSelectivityKeys
   ): void {
-    if (!old) return;
     if (old?.r) {
-      cs.sm[key] = old.r;
+      cs.sm[shortMapping[key]] = old.r;
     }
-    if (!old.sm) return;
-    enumKeys<ScoreSelectivityKeys>(ScoreSelectivity).forEach((k) => {
-      cs.sm[shortMapping[k]] = old.sm[k] ?? 0;
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      delete cs.sm[k];
-    });
   }
 
   static fromObject(obj: object): CoinScore {
